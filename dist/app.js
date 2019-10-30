@@ -97,15 +97,9 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_site_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/site.js */ "./src/js/site.js");
 /* harmony import */ var _js_site_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_site_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _js_dogs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/dogs.js */ "./src/js/dogs.js");
-/* harmony import */ var _js_dogs_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_dogs_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _js_test_ts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/test.ts */ "./src/js/test.ts");
-/* harmony import */ var _js_test_ts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_test_ts__WEBPACK_IMPORTED_MODULE_2__);
 ﻿
 
 // js
-
-
 
 
 /***/ }),
@@ -121,55 +115,6 @@ module.exports = __webpack_require__.p + "app.css";
 
 /***/ }),
 
-/***/ "./src/js/dogs.js":
-/*!************************!*\
-  !*** ./src/js/dogs.js ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-﻿
-var count = 1;
-var Dog = function (settings) {
-    
-    if (!settings) {
-        settings = {};
-       //throw Error('This dog is not configured correctly');
-    }
-    
-    var name = settings.name || 'Dog';
-    var word = settings.word || 'woof';
-    
-    var speak = function () {
-        console.log(`${name} says ${word}!`);
-        $('#dogs').after(`${count}: ${name} says ${word}!<br>`);
-        count++;
-    };
-
-    var btn = document.createElement('button');
-    btn.innerHTML = 'Make ' + name + ' Speak';
-    btn.onclick = speak;
-    $('#dogs').append(btn);
-};
-
-
-var rufus = new Dog({ name: 'Rufus' });
-var spot = new Dog({ name: 'Spot', word: 'bark' });
-var dog3 = new Dog();
-
-go();
-
-function go() {
-    setTimeout(function () {
-        $('#dogs button:first').click();
-        go();
-    }, 1000);
-}
-
-
-/***/ }),
-
 /***/ "./src/js/site.js":
 /*!************************!*\
   !*** ./src/js/site.js ***!
@@ -178,22 +123,11 @@ function go() {
 /***/ (function(module, exports) {
 
 ﻿
-console.log('jQuery Version: ' + jQuery.fn.jquery);
+$('nav ul li a').click(function (e) {
+    e.preventDefault();
+    animateScrollTo(document.querySelector($(this).attr('href')), {speed:100});
+});
 
-
-/***/ }),
-
-/***/ "./src/js/test.ts":
-/*!************************!*\
-  !*** ./src/js/test.ts ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-﻿
-//alert('test.ts');
-//debugger;//1
-//throw Error('error 1');
 
 /***/ }),
 
